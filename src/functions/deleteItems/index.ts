@@ -9,7 +9,7 @@ export default <I extends Item>(
 
   const query = config.createQuery(db);
 
-  const creatededFilter = config.createFilter(filter);
+  const createdFilter = config.createFilter(filter);
 
-  await Promise.resolve(filterItems(query, creatededFilter).delete());
+  await Promise.resolve(filterItems(query, createdFilter).delete());
 };

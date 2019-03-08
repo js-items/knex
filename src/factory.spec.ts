@@ -47,7 +47,11 @@ beforeAll(async () => {
 const facade = factory<TestItem>({
   convertDocumentIntoItem: document => ({
     ...document,
-    booleanProperty: document.booleanProp === 1
+    booleanProperty: document.booleanProperty === 1
+  }),
+  convertItemIntoDocument: item => ({
+    ...item,
+    booleanProperty: item.booleanProperty ? 1 : 0
   }),
   db,
   itemName: "TestItem",

@@ -12,6 +12,7 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItem<I> => async ({
   const query = config.createQuery(db);
 
   const createdFilter = createIdFilter({ id, filter, config });
+  
   const document = await Promise.resolve(
     filterItems(query, createdFilter).first()
   );

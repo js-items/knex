@@ -9,7 +9,7 @@ const comparisonKeys: string[] = [
   "$lt",
   "$lte",
   "$gt",
-  "gte",
+  "$gte",
   "$search",
   "$in",
   "$nin",
@@ -26,7 +26,7 @@ interface QueryCreator {
   readonly [key: string]: (options: Options) => QueryBuilder;
 }
 
-const queryCreatorsMap: QueryCreator = {
+export const queryCreatorsMap: QueryCreator = {
   $eq: ({ filter, query, property }: Options) =>
     filter.$eq ? query.where(property, filter.$eq as any) : query,
   $gt: ({ filter, query, property }: Options) =>
@@ -58,7 +58,6 @@ const queryCreatorsMap: QueryCreator = {
       ? query.where(property, "like", `%${filter.$search}%`)
       : query
 };
-
 
 const constructComparisonFilter = <Property>(
   query: QueryBuilder,

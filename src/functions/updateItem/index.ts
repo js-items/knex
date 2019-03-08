@@ -12,11 +12,11 @@ export default <I extends Item>(
   const query = config.createQuery(db);
 
   // tslint:disable-next-line:no-any
-  const document = config.convertDocumentIntoItem({ ...(patch as any), id });
+  const document = config.convertItemIntoDocument({ ...(patch as any), id });
 
   const constructedFilter = createIdFilter({ id, filter, config });
 
   await Promise.resolve(filterItems(query, constructedFilter).update(document));
 
-  return getItem<I>(config)({ id, filter });
+  return getItem<I>(config)({ id });
 };

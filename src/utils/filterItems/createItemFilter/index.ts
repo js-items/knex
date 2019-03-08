@@ -4,12 +4,12 @@ import { QueryBuilder } from "knex";
 import constructComparisonFilter from '../constructComparisonFilter';
 
 export default <I extends Item>(query: QueryBuilder, filter: ItemFilter<I>) =>
-  Object.keys(filter).reduce((result, prop) => {
+  Object.keys(filter).reduce((result, property) => {
     // tslint:disable-next-line:no-any
-    const filterValue = (filter as any)[prop];
+    const filterValue = (filter as any)[property];
     if (!(filterValue instanceof Object)) {
-      return result.where(prop, filterValue);
+      return result.where(property, filterValue);
     } else {
-      return constructComparisonFilter(query, prop, filterValue);
+      return constructComparisonFilter(query, property, filterValue);
     }
   }, query);

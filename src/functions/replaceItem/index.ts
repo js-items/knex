@@ -18,6 +18,7 @@ export default <I extends Item>(
   const response = await Promise.resolve(
     filterItems(query, createdFilter).update(document)
   );
+  
   if (!response) {
     throw new ItemNotFoundError(config.itemName, id);
   }

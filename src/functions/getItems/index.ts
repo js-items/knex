@@ -43,9 +43,9 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
     const createdSort = config.createSort(sort);
 
     const knexSort = Object.keys(createdSort).reduce((prev, next) => {
-      const order = !xor(
+      const order = xor(
         pagination.after !== start,
-        createdSort[prev as keyof I] === asc
+        createdSort[next as keyof I] === asc
       )
         ? "asc"
         : "desc";
@@ -60,7 +60,7 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
       (result, sortKey) => result.orderBy(sortKey, (knexSort as any)[sortKey]),
       filterQuery
     );
-
+    
     const limitQuery = sortQuery.limit(paginationLimit + 1);
 
     const results = await Promise.resolve(limitQuery);
@@ -70,7 +70,7 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
     const items: I[] = documents.map(config.convertDocumentIntoItem);
 
     const isEnd = results.length <= paginationLimit;
-
+    
     return createGetItemsResult({ items, isEnd, pagination, sort });
   };
 };
