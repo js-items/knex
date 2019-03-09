@@ -10,8 +10,6 @@ jobs:
       - image: mysql:5.7
     environment:
       - NPM_CONFIG_LOGLEVEL: warn
-      - MYSQL_ALLOW_EMPTY_PASSWORD: true
-      - MYSQL_ROOT_PASSWORD: password
     working_directory: ~/repo
     steps:
       - checkout
