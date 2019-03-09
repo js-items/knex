@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "lint": "tslint --project tsconfig.json --config tslint.json './src/**/*.ts'",
-    "test": "jest --coverage",
+    "test": "jest --coverage && codecov",
     "test:watch": "jest --watch --coverage",
     "semantic-release": "semantic-release-public-circleci-lib"
   },
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/js-items/knex#readme",
   "devDependencies": {
-    "@js-items/foundation": "1.0.8",
+    "@js-items/foundation": "1.0.12",
     "@kube-js/semantic-release": "1.0.7",
     "@kube-js/tscommons": "1.0.4",
     "@types/btoa": "1.2.2",
@@ -43,6 +43,7 @@
   "dependencies": {
     "atob": "^2.1.2",
     "btoa": "^1.2.1",
+    "codecov": "^3.2.0",
     "dotenv": "^6.2.0",
     "knex": "^0.16.3",
     "lodash.once": "^4.1.1",
