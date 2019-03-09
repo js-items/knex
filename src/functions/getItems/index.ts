@@ -9,7 +9,7 @@ import {
 } from "@js-items/foundation";
 import { start } from "@js-items/foundation/dist/interfaces/Cursor";
 import { asc } from "@js-items/foundation/dist/interfaces/SortOrder";
-import FacadeConfig from "../../Config";
+import FacadeConfig from "../../FacadeConfig";
 import filterItems from "../../utils/filterItems";
 
 export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {

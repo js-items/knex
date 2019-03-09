@@ -1,6 +1,6 @@
 import { Item } from "@js-items/foundation";
 import Facade from "@js-items/foundation/dist/Facade";
-import FacadeConfig, { Document } from "./Config";
+import FacadeConfig, { Document } from "./FacadeConfig";
 import FactoryConfig from "./FactoryConfig";
 import {
   countItems,

@@ -1,5 +1,5 @@
 import { CountItems, Item } from "@js-items/foundation";
-import FacadeConfig from "../../Config";
+import FacadeConfig from "../../FacadeConfig";
 import filterItems from "../../utils/filterItems";
 
 export default <I extends Item>(

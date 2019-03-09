@@ -1,5 +1,5 @@
 import { Item, UpdateItem } from "@js-items/foundation";
-import FacadeConfig from "../../Config";
+import FacadeConfig from "../../FacadeConfig";
 import createIdFilter from "../../utils/createIdFilter";
 import filterItems from "../../utils/filterItems";
 import getItem from "../getItem";

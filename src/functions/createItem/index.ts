@@ -1,5 +1,5 @@
 import { ConflictingItemError, CreateItem, Item } from "@js-items/foundation";
-import FacadeConfig from "../../Config";
+import FacadeConfig from "../../FacadeConfig";
 
 const conflictErrorCode = 1062;
 
