@@ -7,9 +7,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.15
-      - image: mysql:5.6
+      - image: circleci/mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD=password
       - NPM_CONFIG_LOGLEVEL: warn
     working_directory: ~/repo
     steps:
