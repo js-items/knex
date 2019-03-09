@@ -1,6 +1,6 @@
 import { Filter, Item, Sort } from "@js-items/foundation";
 import * as knex from "knex";
-import { Document } from "./FacadeConfig";
+import { Document } from "./Config";
 
 export default interface FacadeConfig<I extends Item> {
   readonly convertDocumentIntoItem?: (document: Document) => I;

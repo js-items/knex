@@ -1,5 +1,7 @@
+// tslint:disable:no-any
 import { Filter, Item } from "@js-items/foundation";
 import { QueryBuilder } from "knex";
+import Value from "../../../types/Value";
 import createFilter from "../index";
 
 export const addAndToQuery = <I extends Item>(
@@ -34,6 +36,5 @@ export const addOperatorToQuery = (
   query: QueryBuilder,
   property: string,
   operator: string,
-  // tslint:disable-next-line:no-any
-  value: any
+  value?: Value
 ) => (value !== undefined ? query.where(property, operator, value) : query);

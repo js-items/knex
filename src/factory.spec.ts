@@ -51,7 +51,7 @@ const facade = factory<TestItem>({
   }),
   convertItemIntoDocument: item => ({
     ...item,
-    booleanProperty: item.booleanProperty ? 1 : 0
+    booleanProperty: item.booleanProperty === true ? 1 : 0
   }),
   db,
   itemName: "TestItem",

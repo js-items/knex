@@ -9,7 +9,7 @@ import {
 } from "@js-items/foundation";
 import { start } from "@js-items/foundation/dist/interfaces/Cursor";
 import { asc } from "@js-items/foundation/dist/interfaces/SortOrder";
-import FacadeConfig from "../../FacadeConfig";
+import FacadeConfig from "../../Config";
 import filterItems from "../../utils/filterItems";
 
 export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
@@ -32,9 +32,10 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
 
     const paginationFilter = createPaginationFilter(pagination, sort);
 
-    const paginationLimit = pagination.limit
-      ? pagination.limit
-      : config.defaultPaginationLimit;
+    const paginationLimit =
+      pagination.limit !== undefined
+        ? pagination.limit
+        : config.defaultPaginationLimit;
 
     const fullFilter = { $and: [filter, paginationFilter] };
 
@@ -42,7 +43,8 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
 
     const createdSort = config.createSort(sort);
 
-    const knexSort = Object.keys(createdSort).reduce((prev, next) => {
+    // tslint:disable-next-line:no-any
+    const knexSort = Object.keys(createdSort).reduce((prev: any, next: any) => {
       const order = xor(
         pagination.after !== start,
         createdSort[next as keyof I] === asc
@@ -56,11 +58,10 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
     const filterQuery = filterItems(query, createdFilter);
 
     const sortQuery = Object.keys(knexSort).reduce(
-      // tslint:disable-next-line:no-any
-      (result, sortKey) => result.orderBy(sortKey, (knexSort as any)[sortKey]),
+      (result, sortKey) => result.orderBy(sortKey, knexSort[sortKey]),
       filterQuery
     );
-    
+
     const limitQuery = sortQuery.limit(paginationLimit + 1);
 
     const results = await Promise.resolve(limitQuery);
@@ -70,7 +71,7 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
     const items: I[] = documents.map(config.convertDocumentIntoItem);
 
     const isEnd = results.length <= paginationLimit;
-    
+
     return createGetItemsResult({ items, isEnd, pagination, sort });
   };
 };

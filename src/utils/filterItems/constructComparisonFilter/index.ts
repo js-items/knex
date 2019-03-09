@@ -28,33 +28,43 @@ interface QueryCreator {
 
 export const queryCreatorsMap: QueryCreator = {
   $eq: ({ filter, query, property }: Options) =>
-    filter.$eq ? query.where(property, filter.$eq as any) : query,
+    filter.$eq !== undefined ? query.where(property, filter.$eq) : query,
   $gt: ({ filter, query, property }: Options) =>
-    filter.$gt ? addOperatorToQuery(query, property, ">", filter.$gt) : query,
+    filter.$gt !== undefined
+      ? addOperatorToQuery(query, property, ">", filter.$gt)
+      : query,
   $gte: ({ filter, query, property }: Options) =>
-    filter.$gte
+    filter.$gte !== undefined
       ? addOperatorToQuery(query, property, ">=", filter.$gte)
       : query,
   $in: ({ filter, query, property }: Options) =>
-    filter.$in ? query.whereIn(property, filter.$in as any[]) : query,
+    filter.$in !== undefined
+      ? query.whereIn(property, filter.$in as any[])
+      : query,
   $lt: ({ filter, query, property }: Options) =>
-    filter.$lt ? addOperatorToQuery(query, property, "<", filter.$lt) : query,
+    filter.$lt !== undefined
+      ? addOperatorToQuery(query, property, "<", filter.$lt)
+      : query,
   $lte: ({ filter, query, property }: Options) =>
-    filter.$lte
+    filter.$lte !== undefined
       ? addOperatorToQuery(query, property, "<=", filter.$lte)
       : query,
   $ne: ({ filter, query, property }: Options) =>
-    filter.$ne ? addOperatorToQuery(query, property, "<>", filter.$ne) : query,
+    filter.$ne !== undefined
+      ? addOperatorToQuery(query, property, "<>", filter.$ne)
+      : query,
   $nin: ({ filter, query, property }: Options) =>
-    filter.$nin ? query.whereNotIn(property, filter.$nin as any[]) : query,
+    filter.$nin !== undefined
+      ? query.whereNotIn(property, filter.$nin)
+      : query,
   $not: ({ filter, query, property }: Options) =>
-    filter.$not
+    filter.$not !== undefined
       ? query.whereNot(function(this: QueryBuilder) {
-          constructComparisonFilter(this, property, filter.$not as any);
+          constructComparisonFilter(this, property, filter.$not);
         })
       : query,
   $search: ({ filter, query, property }: Options) =>
-    filter.$search
+    filter.$search !== undefined
       ? query.where(property, "like", `%${filter.$search}%`)
       : query
 };

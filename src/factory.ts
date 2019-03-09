@@ -1,6 +1,6 @@
 import { Item } from "@js-items/foundation";
 import Facade from "@js-items/foundation/dist/Facade";
-import FacadeConfig from "./FacadeConfig";
+import FacadeConfig, { Document } from "./Config";
 import FactoryConfig from "./FactoryConfig";
 import {
   countItems,
@@ -17,8 +17,8 @@ export const defaultPaginationLimit = 10;
 
 export default <I extends Item>(factoryConfig: FactoryConfig<I>): Facade<I> => {
   const facadeConfig: FacadeConfig<I> = {
-    convertDocumentIntoItem: document => document,
-    convertItemIntoDocument: item => item,
+    convertDocumentIntoItem: (document: Document) => document,
+    convertItemIntoDocument: (item: Partial<I>) => item,
     createFilter: filter => filter,
     createQuery: db => db.table(facadeConfig.tableName),
     createSort: sort => sort,

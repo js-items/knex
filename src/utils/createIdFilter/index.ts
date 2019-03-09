@@ -1,5 +1,5 @@
 import { Filter, Item } from "@js-items/foundation";
-import FacadeConfig from "../../FacadeConfig";
+import FacadeConfig from "../../Config";
 
 export interface Options<I extends Item> {
   readonly id: string;
