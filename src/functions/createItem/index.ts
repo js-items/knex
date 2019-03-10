@@ -20,7 +20,7 @@ export default <I extends Item>(
     if (err.errno === conflictErrorCode) {
       throw new ConflictingItemError(config.itemName, id);
     }
-
+    /* istanbul ignore next */
     throw err;
   }
 

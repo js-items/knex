@@ -72,7 +72,8 @@ exports.default = (function (config) {
                         db = _e.sent();
                         query = config.createQuery(db);
                         paginationFilter = foundation_1.createPaginationFilter(pagination, sort);
-                        paginationLimit = pagination.limit !== undefined
+                        paginationLimit = 
+                        /* istanbul ignore next */ pagination.limit !== undefined
                             ? pagination.limit
                             : config.defaultPaginationLimit;
                         fullFilter = { $and: [filter, paginationFilter] };

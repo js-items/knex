@@ -17,8 +17,10 @@ export const defaultPaginationLimit = 10;
 
 export default <I extends Item>(factoryConfig: FactoryConfig<I>): Facade<I> => {
   const facadeConfig: FacadeConfig<I> = {
-    convertDocumentIntoItem: (document: Document) => document,
-    convertItemIntoDocument: (item: Partial<I>) => item,
+    convertDocumentIntoItem: /* istanbul ignore next */ (document: Document) =>
+      document,
+    convertItemIntoDocument: /* istanbul ignore next */ (item: Partial<I>) =>
+      item,
     createFilter: filter => filter,
     createQuery: db => db.table(facadeConfig.tableName),
     createSort: sort => sort,

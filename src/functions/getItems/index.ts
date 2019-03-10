@@ -33,7 +33,7 @@ export default <I extends Item>(config: FacadeConfig<I>): GetItems<I> => {
     const paginationFilter = createPaginationFilter(pagination, sort);
 
     const paginationLimit =
-      pagination.limit !== undefined
+      /* istanbul ignore next */ pagination.limit !== undefined
         ? pagination.limit
         : config.defaultPaginationLimit;
 

@@ -72,6 +72,7 @@ exports.default = (function (config) { return function (_a) {
                     if (err_1.errno === conflictErrorCode) {
                         throw new foundation_1.ConflictingItemError(config.itemName, id);
                     }
+                    /* istanbul ignore next */
                     throw err_1;
                 case 5: return [2 /*return*/, { item: item }];
             }

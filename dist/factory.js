@@ -14,7 +14,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var functions_1 = require("./functions");
 exports.defaultPaginationLimit = 10;
 exports.default = (function (factoryConfig) {
-    var facadeConfig = __assign({ convertDocumentIntoItem: function (document) { return document; }, convertItemIntoDocument: function (item) { return item; }, createFilter: function (filter) { return filter; }, createQuery: function (db) { return db.table(facadeConfig.tableName); }, createSort: function (sort) { return sort; }, defaultPaginationLimit: exports.defaultPaginationLimit, itemName: factoryConfig.itemName, tableName: factoryConfig.itemName }, factoryConfig);
+    var facadeConfig = __assign({ convertDocumentIntoItem: /* istanbul ignore next */ function (document) {
+            return document;
+        }, convertItemIntoDocument: /* istanbul ignore next */ function (item) {
+            return item;
+        }, createFilter: function (filter) { return filter; }, createQuery: function (db) { return db.table(facadeConfig.tableName); }, createSort: function (sort) { return sort; }, defaultPaginationLimit: exports.defaultPaginationLimit, itemName: factoryConfig.itemName, tableName: factoryConfig.itemName }, factoryConfig);
     return {
         countItems: functions_1.countItems(facadeConfig),
         createItem: functions_1.createItem(facadeConfig),
