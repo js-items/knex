@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/js-items/knex/branch/master/graph/badge.svg)](https://codecov.io/gh/js-items/knex)
 [![CircleCI](https://circleci.com/gh/js-items/knex.svg?style=svg)](https://circleci.com/gh/js-items/knex)
 
-- Concrete implementation of js-items for knex.js
+Knex.js implementation of js-items
 
 ## Installation:
 `npm i @js-items/knex --save`
