@@ -5,6 +5,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/js-items/knex.svg)
 ![jscpd](report/jscpd-badge.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/js-items/foundation/badge.svg?targetFile=package.json)](https://snyk.io/test/github/js-items/foundation?targetFile=package.json)
+
 Knex.js implementation of js-items
 
 ## Installation:
