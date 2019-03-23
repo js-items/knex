@@ -8,11 +8,15 @@
 
 Knex.js implementation of js-items
 
+There is a fantastic alternative to this project (and @js-items/knex is based on it): 
+[js-entity-repos/knex](https://github.com/js-entity-repos/knex).
+
+The main differences to the @js-entity-repos:
+- different naming convention: using `item` instead of `entity`
+- cursor based pagination operates using `before` and `after` instead of `cursor` and `direction`
+
 ## Installation:
 `npm i @js-items/knex --save`
-
-This package is heavily inspired by:
-- [js-entity-repos/knex](https://github.com/js-entity-repos/knex)
 
 Credits:
 - [ryansmith94](https://github.com/ryansmith94)
