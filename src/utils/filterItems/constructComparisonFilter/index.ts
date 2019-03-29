@@ -1,19 +1,19 @@
 // tslint:disable:no-any
-import { ComparisonFilter } from "@js-items/foundation/dist/interfaces/Filter";
-import { QueryBuilder } from "knex";
-import { addOperatorToQuery } from "../knexFilters";
+import { ComparisonFilter } from '@js-items/foundation/dist/interfaces/Filter';
+import { QueryBuilder } from 'knex';
+import { addOperatorToQuery } from '../knexFilters';
 
 const comparisonKeys: string[] = [
-  "$eq",
-  "$ne",
-  "$lt",
-  "$lte",
-  "$gt",
-  "$gte",
-  "$search",
-  "$in",
-  "$nin",
-  "$not"
+  '$eq',
+  '$ne',
+  '$lt',
+  '$lte',
+  '$gt',
+  '$gte',
+  '$search',
+  '$in',
+  '$nin',
+  '$not',
 ];
 
 interface Options {
@@ -31,11 +31,11 @@ export const queryCreatorsMap: QueryCreator = {
     filter.$eq !== undefined ? query.where(property, filter.$eq) : query,
   $gt: ({ filter, query, property }: Options) =>
     filter.$gt !== undefined
-      ? addOperatorToQuery(query, property, ">", filter.$gt)
+      ? addOperatorToQuery(query, property, '>', filter.$gt)
       : query,
   $gte: ({ filter, query, property }: Options) =>
     filter.$gte !== undefined
-      ? addOperatorToQuery(query, property, ">=", filter.$gte)
+      ? addOperatorToQuery(query, property, '>=', filter.$gte)
       : query,
   $in: ({ filter, query, property }: Options) =>
     filter.$in !== undefined
@@ -43,20 +43,18 @@ export const queryCreatorsMap: QueryCreator = {
       : query,
   $lt: ({ filter, query, property }: Options) =>
     filter.$lt !== undefined
-      ? addOperatorToQuery(query, property, "<", filter.$lt)
+      ? addOperatorToQuery(query, property, '<', filter.$lt)
       : query,
   $lte: ({ filter, query, property }: Options) =>
     filter.$lte !== undefined
-      ? addOperatorToQuery(query, property, "<=", filter.$lte)
+      ? addOperatorToQuery(query, property, '<=', filter.$lte)
       : query,
   $ne: ({ filter, query, property }: Options) =>
     filter.$ne !== undefined
-      ? addOperatorToQuery(query, property, "<>", filter.$ne)
+      ? addOperatorToQuery(query, property, '<>', filter.$ne)
       : query,
   $nin: ({ filter, query, property }: Options) =>
-    filter.$nin !== undefined
-      ? query.whereNotIn(property, filter.$nin)
-      : query,
+    filter.$nin !== undefined ? query.whereNotIn(property, filter.$nin) : query,
   $not: ({ filter, query, property }: Options) =>
     filter.$not !== undefined
       ? query.whereNot(function(this: QueryBuilder) {
@@ -65,8 +63,8 @@ export const queryCreatorsMap: QueryCreator = {
       : query,
   $search: ({ filter, query, property }: Options) =>
     filter.$search !== undefined
-      ? query.where(property, "like", `%${filter.$search}%`)
-      : query
+      ? query.where(property, 'like', `%${filter.$search}%`)
+      : query,
 };
 
 const constructComparisonFilter = <Property>(
@@ -76,7 +74,7 @@ const constructComparisonFilter = <Property>(
 ): QueryBuilder =>
   comparisonKeys.reduce(
     (prev, next) =>
-      (filter as any)[next]
+      (filter as any)[next] !== undefined
         ? queryCreatorsMap[next]({ query, property, filter })
         : prev,
     query
