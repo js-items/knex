@@ -2,6 +2,7 @@ import { Item, ItemNotFoundError, ReplaceItem } from "@js-items/foundation";
 import FacadeConfig from "../../FacadeConfig";
 import createIdFilter from "../../utils/createIdFilter";
 import filterItems from "../../utils/filterItems";
+import getItem from "../getItem";
 
 export default <I extends Item>(
   config: FacadeConfig<I>
@@ -23,5 +24,5 @@ export default <I extends Item>(
     throw new ItemNotFoundError(config.itemName, id);
   }
 
-  return { item };
+  return getItem<I>(config)({ id });
 };
