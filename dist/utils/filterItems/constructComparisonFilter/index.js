@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var knexFilters_1 = require("../knexFilters");
 var comparisonKeys = [
-    "$eq",
-    "$ne",
-    "$lt",
-    "$lte",
-    "$gt",
-    "$gte",
-    "$search",
-    "$in",
-    "$nin",
-    "$not"
+    '$eq',
+    '$ne',
+    '$lt',
+    '$lte',
+    '$gt',
+    '$gte',
+    '$search',
+    '$in',
+    '$nin',
+    '$not',
 ];
 exports.queryCreatorsMap = {
     $eq: function (_a) {
@@ -21,13 +21,13 @@ exports.queryCreatorsMap = {
     $gt: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$gt !== undefined
-            ? knexFilters_1.addOperatorToQuery(query, property, ">", filter.$gt)
+            ? knexFilters_1.addOperatorToQuery(query, property, '>', filter.$gt)
             : query;
     },
     $gte: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$gte !== undefined
-            ? knexFilters_1.addOperatorToQuery(query, property, ">=", filter.$gte)
+            ? knexFilters_1.addOperatorToQuery(query, property, '>=', filter.$gte)
             : query;
     },
     $in: function (_a) {
@@ -39,26 +39,24 @@ exports.queryCreatorsMap = {
     $lt: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$lt !== undefined
-            ? knexFilters_1.addOperatorToQuery(query, property, "<", filter.$lt)
+            ? knexFilters_1.addOperatorToQuery(query, property, '<', filter.$lt)
             : query;
     },
     $lte: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$lte !== undefined
-            ? knexFilters_1.addOperatorToQuery(query, property, "<=", filter.$lte)
+            ? knexFilters_1.addOperatorToQuery(query, property, '<=', filter.$lte)
             : query;
     },
     $ne: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$ne !== undefined
-            ? knexFilters_1.addOperatorToQuery(query, property, "<>", filter.$ne)
+            ? knexFilters_1.addOperatorToQuery(query, property, '<>', filter.$ne)
             : query;
     },
     $nin: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
-        return filter.$nin !== undefined
-            ? query.whereNotIn(property, filter.$nin)
-            : query;
+        return filter.$nin !== undefined ? query.whereNotIn(property, filter.$nin) : query;
     },
     $not: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
@@ -71,13 +69,13 @@ exports.queryCreatorsMap = {
     $search: function (_a) {
         var filter = _a.filter, query = _a.query, property = _a.property;
         return filter.$search !== undefined
-            ? query.where(property, "like", "%" + filter.$search + "%")
+            ? query.where(property, 'like', "%" + filter.$search + "%")
             : query;
-    }
+    },
 };
 var constructComparisonFilter = function (query, property, filter) {
     return comparisonKeys.reduce(function (prev, next) {
-        return filter[next]
+        return filter[next] !== undefined
             ? exports.queryCreatorsMap[next]({ query: query, property: property, filter: filter })
             : prev;
     }, query);

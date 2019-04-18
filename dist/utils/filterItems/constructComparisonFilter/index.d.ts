@@ -1,5 +1,5 @@
-import { ComparisonFilter } from "@js-items/foundation/dist/interfaces/Filter";
-import { QueryBuilder } from "knex";
+import { ComparisonFilter } from '@js-items/foundation/dist/interfaces/Filter';
+import { QueryBuilder } from 'knex';
 interface Options {
     readonly query: QueryBuilder;
     readonly property: string;

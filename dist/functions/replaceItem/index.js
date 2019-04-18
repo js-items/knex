@@ -53,6 +53,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var foundation_1 = require("@js-items/foundation");
 var createIdFilter_1 = __importDefault(require("../../utils/createIdFilter"));
 var filterItems_1 = __importDefault(require("../../utils/filterItems"));
+var getItem_1 = __importDefault(require("../getItem"));
 exports.default = (function (config) { return function (_a) {
     var id = _a.id, item = _a.item, _b = _a.filter, filter = _b === void 0 ? {} : _b;
     return __awaiter(_this, void 0, void 0, function () {
@@ -71,7 +72,7 @@ exports.default = (function (config) { return function (_a) {
                     if (!response) {
                         throw new foundation_1.ItemNotFoundError(config.itemName, id);
                     }
-                    return [2 /*return*/, { item: item }];
+                    return [2 /*return*/, getItem_1.default(config)({ id: id })];
             }
         });
     });
