@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/js-items/knex#readme",
   "devDependencies": {
-    "@js-items/foundation": "1.0.24",
+    "@js-items/foundation": "1.0.25",
     "@kube-js/semantic-release": "1.0.7",
     "@kube-js/tscommons": "1.0.5",
     "@types/btoa": "1.2.3",
