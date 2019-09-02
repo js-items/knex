@@ -47,7 +47,7 @@
   "dependencies": {
     "atob": "2.1.2",
     "btoa": "1.2.1",
-    "codecov": "3.2.0",
+    "codecov": "3.5.0",
     "dotenv": "8.0.0",
     "jscpd": "2.0.11",
     "jscpd-badge-reporter": "1.1.3",
