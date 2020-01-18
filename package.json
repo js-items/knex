@@ -39,7 +39,7 @@
     "@types/node": "11.13.22",
     "jest": "24.9.0",
     "rimraf": "3.0.0",
-    "ts-jest": "24.1.0",
+    "ts-jest": "24.3.0",
     "tslint": "5.20.0",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.6.3"
