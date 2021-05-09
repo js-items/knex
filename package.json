@@ -37,7 +37,7 @@
     "@types/jest": "24.0.18",
     "@types/lodash.once": "4.1.6",
     "@types/node": "11.13.22",
-    "jest": "24.9.0",
+    "jest": "26.0.0",
     "rimraf": "3.0.0",
     "ts-jest": "24.1.0",
     "tslint": "5.20.0",
